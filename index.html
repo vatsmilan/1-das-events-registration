@@ -585,21 +585,21 @@
         function updateConfig(type) {
             let val = (type === 'marquee') ? document.getElementById('newMarquee').value : document.getElementById('adminDateInput').value;
             if(!val) return;
-            fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: 'update_config', type: type, value: val, pin: "2347" }) }).then(r => r.json()).then(d => { alert(d.message); if(type === 'date') document.getElementById('displayDate').innerText = val; if(type === 'marquee') document.getElementById('marqueeText').innerText = val; });
+            fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: 'update_config', type: type, value: val, pin: "234726" }) }).then(r => r.json()).then(d => { alert(d.message); if(type === 'date') document.getElementById('displayDate').innerText = val; if(type === 'marquee') document.getElementById('marqueeText').innerText = val; });
         }
         
         function manageEvent(type) {
             const name = (type === 'add') ? document.getElementById('newEventName').value : document.getElementById('delEventName').value;
             const reqExtra = document.getElementById('reqExtraCheck').checked;
             if(!name) return;
-            fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: 'manage_event', type: type, eventName: name, reqExtra: reqExtra, pin: "2347" }) }).then(r => r.json()).then(d => { alert(d.message); location.reload(); });
+            fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: 'manage_event', type: type, eventName: name, reqExtra: reqExtra, pin: "234726" }) }).then(r => r.json()).then(d => { alert(d.message); location.reload(); });
         }
         
         function getPDF() {
             const target = document.getElementById('pdfTarget').value;
             const btn = document.activeElement;
             btn.innerText = "...";
-            fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: 'get_pdf', target: target, pin: "2347" }) }).then(r => r.json()).then(d => { 
+            fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: 'get_pdf', target: target, pin: "234726" }) }).then(r => r.json()).then(d => { 
                 btn.innerText = "SEE DETAILS 📋";
                 if(d.status === 'success') {
                     let a = document.createElement('a'); a.href = d.url; a.target = '_blank'; document.body.appendChild(a); a.click(); document.body.removeChild(a);
@@ -609,3 +609,4 @@
     </script>
 </body>
 </html>
+
